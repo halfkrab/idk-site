@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Веселий персонаж і устриця</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .scene {
+            position: relative;
+            width: 300px;
+            height: 400px;
+        }
+
+        .character-container {
+            position: absolute;
+            bottom: 50px;
+            left: 100px;
+            width: 100px;
+            height: 200px;
+            animation: 
+                walk 2s infinite linear,
+                disappear 5s linear forwards;
+        }
+
+        .character-body {
+            position: absolute;
+            top: 0;
+            left: 20px;
+            width: 60px;
+            height: 120px;
+            background: linear-gradient(#ff9999, #ff6666);
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .face {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .eyes {
+            display: flex;
+            justify-content: space-between;
+            width: 40px;
+        }
+
+        .eye {
+            width: 12px;
+            height: 12px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        .mouth {
+            width: 24px;
+            height: 12px;
+            background: #fff;
+            border-radius: 0 0 12px 12px;
+            border: 2px solid #000;
+            margin: 10px auto;
+        }
+
+        .leg-ball {
+            position: absolute;
+            bottom: 0;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #ff9999 40%, #cc6666 70%);
+            border-radius: 50%;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.3) 2px, transparent 2px);
+            background-size: 8px 8px;
+        }
+
+        .leg-left {
+            left: 5px;
+            animation: leg-move-left 1s infinite ease-in-out;
+        }
+
+        .leg-right {
+            right: 5px;
+            animation: leg-move-right 1s infinite ease-in-out;
+        }
+
+        .oyster {
+            position: absolute;
+            top: -100px;
+            left: 110px;
+            width: 80px;
+            height: 60px;
+            background: radial-gradient(circle, #a0a0a0 40%, #606060 70%);
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: oyster-fly 5s linear forwards;
+        }
+
+        .oyster::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #ff6666;
+            border-radius: 50%;
+        }
+
+        @keyframes walk {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(50px); }
+        }
+
+        @keyframes leg-move-left {
+            0%, 100% { transform: rotate(0) translateY(0); }
+            25% { transform: rotate(30deg) translateY(-10px); }
+            50% { transform: rotate(0) translateY(0); }
+            75% { transform: rotate(-30deg) translateY(-10px); }
+        }
+
+        @keyframes leg-move-right {
+            0%, 100% { transform: rotate(0) translateY(0); }
+            25% { transform: rotate(-30deg) translateY(-10px); }
+            50% { transform: rotate(0) translateY(0); }
+            75% { transform: rotate(30deg) translateY(-10px); }
+        }
+
+        @keyframes oyster-fly {
+            0% { transform: translateY(0); opacity: 1; }
+            40% { transform: translateY(250px); opacity: 1; }
+            60% { transform: translateY(250px); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+
+        @keyframes disappear {
+            0%, 50% { opacity: 1; }
+            60%, 100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="character-container">
+            <div class="character-body">
+                <div class="face">
+                    <div class="eyes">
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                    </div>
+                    <div class="mouth"></div>
+                </div>
+            </div>
+            <div class="leg-ball leg-left"></div>
+            <div class="leg-ball leg-right"></div>
+        </div>
+        <div class="oyster"></div>
+    </div>
+</body>
+</html>
